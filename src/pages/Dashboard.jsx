@@ -3,11 +3,14 @@ import api from '../api/axios';
 
 function Dashboard() {
   const [stats, setStats] = useState({
-    users: 0,
-    packages: 0,
-    hosts: 0,
+    totalUsers: 0,
+    totalPackages: 0,
+    totalHosts: 0,
     activeLines: 0,
-    expiredLines: 0
+    expiredLines: 0,
+    suspendedLines: 0,
+    totalDevices: 0,
+    totalRevenue: 0
   });
   const [serverInfo, setServerInfo] = useState({
     reseller_host_url: '',
@@ -16,30 +19,19 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    const fetchStats = async () => {
+    const fetchData = async () => {
       try {
-        const [usersRes, pkgsRes, hostsRes, linesRes, serverRes] = await Promise.all([
-          api.get('/api/users'),
-          api.get('/api/packages'),
-          api.get('/api/hosts'),
-          api.get('/api/lines'),
+        const [statsRes, serverRes] = await Promise.all([
+          api.get('/api/stats'),
           api.get('/api/settings/reseller-info')
         ]);
-        const active = linesRes.data.filter(l => l.status === 'active').length;
-        const expired = linesRes.data.filter(l => l.status === 'expired').length;
-        setStats({
-          users: usersRes.data.length,
-          packages: pkgsRes.data.length,
-          hosts: hostsRes.data.length,
-          activeLines: active,
-          expiredLines: expired
-        });
+        setStats(statsRes.data);
         setServerInfo(serverRes.data);
       } catch (err) {
         console.error(err);
       }
     };
-    fetchStats();
+    fetchData();
   }, []);
 
   return (
@@ -63,21 +55,21 @@ function Dashboard() {
         <div className="stat-card users">
           <div className="stat-icon">👥</div>
           <div className="stat-info">
-            <span className="stat-value">{stats.users}</span>
+            <span className="stat-value">{stats.totalUsers}</span>
             <span className="stat-label">مستخدمو اللوحة</span>
           </div>
         </div>
         <div className="stat-card packages">
           <div className="stat-icon">📦</div>
           <div className="stat-info">
-            <span className="stat-value">{stats.packages}</span>
+            <span className="stat-value">{stats.totalPackages}</span>
             <span className="stat-label">الباقات</span>
           </div>
         </div>
         <div className="stat-card hosts">
           <div className="stat-icon">🖥️</div>
           <div className="stat-info">
-            <span className="stat-value">{stats.hosts}</span>
+            <span className="stat-value">{stats.totalHosts}</span>
             <span className="stat-label">الخوادم</span>
           </div>
         </div>
@@ -93,6 +85,27 @@ function Dashboard() {
           <div className="stat-info">
             <span className="stat-value">{stats.expiredLines}</span>
             <span className="stat-label">خطوط منتهية</span>
+          </div>
+        </div>
+        <div className="stat-card suspended">
+          <div className="stat-icon">⏸️</div>
+          <div className="stat-info">
+            <span className="stat-value">{stats.suspendedLines}</span>
+            <span className="stat-label">خطوط موقوفة</span>
+          </div>
+        </div>
+        <div className="stat-card devices">
+          <div className="stat-icon">📱</div>
+          <div className="stat-info">
+            <span className="stat-value">{stats.totalDevices}</span>
+            <span className="stat-label">إجمالي الأجهزة</span>
+          </div>
+        </div>
+        <div className="stat-card revenue">
+          <div className="stat-icon">💰</div>
+          <div className="stat-info">
+            <span className="stat-value">{stats.totalRevenue}</span>
+            <span className="stat-label">الإيرادات</span>
           </div>
         </div>
       </div>

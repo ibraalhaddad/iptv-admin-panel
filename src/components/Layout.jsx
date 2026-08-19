@@ -16,12 +16,10 @@ function Layout() {
 
   return (
     <div className="app-shell">
-      {/* زر القائمة للشاشات الصغيرة */}
       <button className="menu-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
         ☰
       </button>
 
-      {/* خلفية معتمة عند فتح الشريط في الجوال */}
       {sidebarOpen && <div className="sidebar-overlay" onClick={closeSidebar}></div>}
 
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
@@ -45,6 +43,9 @@ function Layout() {
           </NavLink>
           <NavLink to="/lines" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
             <span>📅</span> الخطوط
+          </NavLink>
+          <NavLink to="/coupons" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
+            <span>🎟️</span> الكوبونات
           </NavLink>
           <NavLink to="/settings" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
             <span>⚙️</span> الإعدادات

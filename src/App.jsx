@@ -7,6 +7,7 @@ import Users from './pages/Users';
 import Packages from './pages/Packages';
 import Hosts from './pages/Hosts';
 import Lines from './pages/Lines';
+import Coupons from './pages/Coupons';
 import Settings from './pages/Settings';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/packages" element={<Packages />} />
           <Route path="/hosts" element={<Hosts />} />
           <Route path="/lines" element={<Lines />} />
+          <Route path="/coupons" element={<Coupons />} />
           <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
