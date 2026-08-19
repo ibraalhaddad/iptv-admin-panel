@@ -15,10 +15,10 @@ export default function Subscriptions() {
     try {
       const token = localStorage.getItem('token');
       const [subsRes, plansRes] = await Promise.all([
-        axios.get('import.meta.env.VITE_API_URL/api/subscriptions/admin', {
+        axios.get('import.meta.env.VITE_API_URL/api/subscriptions/admin'||'http://localhost:5000/api/subscriptions/admin', {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get('import.meta.env.VITE_API_URL/api/subscriptions/plans'),
+        axios.get('import.meta.env.VITE_API_URL/api/subscriptions/plans'||'http://localhost:5000/api/subscriptions/plans'),
       ]);
       setSubscriptions(subsRes.data);
       setPlans(plansRes.data);
@@ -31,7 +31,7 @@ export default function Subscriptions() {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'import.meta.env.VITE_API_URL/api/subscriptions/activate',
+        'import.meta.env.VITE_API_URL/api/subscriptions/activate'||'http://localhost:5000/api/subscriptions/activate',
         { planCode, userId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -45,7 +45,7 @@ export default function Subscriptions() {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `import.meta.env.VITE_API_URL/api/subscriptions/admin/${id}`,
+        `import.meta.env.VITE_API_URL/api/subscriptions/admin/${id}`|| `http://localhost:5000/api/subscriptions/admin/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

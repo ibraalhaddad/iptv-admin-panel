@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'import.meta.env.VITE_API_URL/api';
+const API_URL = import.meta.env.VITE_API_URL/api || 'http://localhost:5000/api';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -47,3 +47,5 @@ export default function Login() {
     </div>
   );
 }
+
+// https://iptv-admin-panel-nu.vercel.app/login

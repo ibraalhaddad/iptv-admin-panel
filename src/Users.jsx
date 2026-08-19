@@ -14,7 +14,7 @@ export default function Users() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('import.meta.env.VITE_API_URL/api/users', {
+      const res = await axios.get('http://localhost:5000/api/users'||'import.meta.env.VITE_API_URL/api/users', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -26,7 +26,7 @@ export default function Users() {
   const handleCreate = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('import.meta.env.VITE_API_URL/api/auth/register', { username, password, role }, {
+      await axios.post('import.meta.env.VITE_API_URL/api/auth/register'||'http://localhost:5000/api/auth/register', { username, password, role }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsername('');

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'import.meta.env.VITE_API_URL/api';
+const API_URL = import.meta.env.VITE_API_URL/api || 'http://localhost:5000/api';
 
 export default function Settings() {
   const [host, setHost] = useState('');
