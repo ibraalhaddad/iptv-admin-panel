@@ -19,19 +19,15 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [statsRes, serverRes] = await Promise.all([
-          api.get('/api/stats'),
-          api.get('/api/settings/reseller-info')
-        ]);
-        setStats(statsRes.data);
-        setServerInfo(serverRes.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchData();
+    // جلب الإحصائيات
+    api.get('/api/stats')
+      .then(res => setStats(res.data))
+      .catch(err => console.error('فشل جلب الإحصائيات', err));
+
+    // جلب معلومات السيرفر
+    api.get('/api/settings/reseller-info')
+      .then(res => setServerInfo(res.data))
+      .catch(err => console.error('فشل جلب معلومات السيرفر', err));
   }, []);
 
   return (
