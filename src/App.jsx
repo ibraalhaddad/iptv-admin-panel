@@ -9,6 +9,8 @@ import Hosts from './pages/Hosts';
 import Lines from './pages/Lines';
 import Coupons from './pages/Coupons';
 import Settings from './pages/Settings';
+import Notifications from './pages/Notifications';
+import Offers from './pages/Offers';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/lines" element={<Lines />} />
           <Route path="/coupons" element={<Coupons />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/offers" element={<Offers />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

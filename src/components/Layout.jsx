@@ -47,6 +47,12 @@ function Layout() {
           <NavLink to="/coupons" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
             <span>🎟️</span> الكوبونات
           </NavLink>
+          <NavLink to="/notifications" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
+            <span>🔔</span> الإشعارات
+          </NavLink>
+          <NavLink to="/offers" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
+            <span>🏷️</span> العروض
+          </NavLink>
           <NavLink to="/settings" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
             <span>⚙️</span> الإعدادات
           </NavLink>

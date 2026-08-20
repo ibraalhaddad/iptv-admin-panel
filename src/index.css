@@ -9,7 +9,8 @@
 body {
   background-color: #f0f2f5;
   color: #333;
-  direction: rtl; /* دعم اللغة العربية */
+  direction: rtl;
+  /* دعم اللغة العربية */
 }
 
 /* ========== الهيكل العام ========== */
@@ -32,7 +33,7 @@ body {
   padding: 10px 15px;
   font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* ========== الشريط الجانبي ========== */
@@ -195,11 +196,25 @@ body {
 }
 
 /* تلوين خفيف للبطاقات */
-.stat-card.users .stat-icon { background: #dbeafe; }
-.stat-card.packages .stat-icon { background: #fef9c3; }
-.stat-card.hosts .stat-icon { background: #dcfce7; }
-.stat-card.active .stat-icon { background: #bbf7d0; }
-.stat-card.expired .stat-icon { background: #fee2e2; }
+.stat-card.users .stat-icon {
+  background: #dbeafe;
+}
+
+.stat-card.packages .stat-icon {
+  background: #fef9c3;
+}
+
+.stat-card.hosts .stat-icon {
+  background: #dcfce7;
+}
+
+.stat-card.active .stat-icon {
+  background: #bbf7d0;
+}
+
+.stat-card.expired .stat-icon {
+  background: #fee2e2;
+}
 
 /* ========== بطاقة السيرفر ========== */
 .server-card {
@@ -208,13 +223,13 @@ body {
   border-radius: 16px;
   padding: 20px 25px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .server-card h3 {
   margin: 0 0 15px 0;
   font-size: 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 10px;
 }
 
@@ -353,13 +368,15 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  overflow-x: auto; /* تمرير أفقي للجداول */
+  overflow-x: auto;
+  /* تمرير أفقي للجداول */
 }
 
 .table-container table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px; /* لضمان التمرير على الشاشات الصغيرة */
+  min-width: 600px;
+  /* لضمان التمرير على الشاشات الصغيرة */
 }
 
 .table-container th,
@@ -552,6 +569,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -686,13 +704,15 @@ body {
   }
 
   .sidebar {
-    transform: translateX(100%); /* إخفاء الشريط خارج الشاشة */
+    transform: translateX(100%);
+    /* إخفاء الشريط خارج الشاشة */
     width: 280px;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   }
 
   .sidebar.open {
-    transform: translateX(0); /* إظهار الشريط */
+    transform: translateX(0);
+    /* إظهار الشريط */
   }
 
   .sidebar-overlay {
@@ -701,7 +721,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
   }
 
@@ -779,6 +799,7 @@ body {
     font-size: 2.5rem;
   }
 }
+
 /* ========== النافذة المنبثقة (Modal) ========== */
 .modal-overlay {
   position: fixed;
@@ -801,7 +822,7 @@ body {
   max-width: 500px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .modal h3 {
@@ -837,6 +858,126 @@ body {
 }
 
 /* ========== بطاقات إضافية للإحصائيات ========== */
-.stat-card.suspended .stat-icon { background: #fef3c7; }
-.stat-card.devices .stat-icon { background: #e0e7ff; }
-.stat-card.revenue .stat-icon { background: #dcfce7; }
+.stat-card.suspended .stat-icon {
+  background: #fef3c7;
+}
+
+.stat-card.devices .stat-icon {
+  background: #e0e7ff;
+}
+
+.stat-card.revenue .stat-icon {
+  background: #dcfce7;
+}
+
+/* ========== اختيار الثيمات ========== */
+.theme-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.theme-card {
+  width: 120px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.2s;
+  background: var(--bg-card);
+}
+
+.theme-card:hover {
+  transform: translateY(-3px);
+}
+
+.theme-card.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.theme-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.theme-card span {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+/* ========== معاينة التطبيق ========== */
+.app-preview {
+  transition: all 0.3s;
+}
+
+/* ========== رفع الصور في النماذج ========== */
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-upload input[type="file"] {
+  padding: 5px;
+}
+
+.file-upload img {
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+/* ========== عناصر قابلة للضغط ========== */
+.clickable {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== الوصول السريع ========== */
+.quick-access {
+  margin-top: 40px;
+}
+
+.quick-access-title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.quick-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.quick-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.quick-icon {
+  font-size: 2rem;
+}
